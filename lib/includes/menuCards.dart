@@ -1,6 +1,4 @@
-import 'package:beonecouriers/homepage.dart';
 import 'package:beonecouriers/pickableShipments.dart';
-import 'package:beonecouriers/profilePage.dart';
 import 'package:beonecouriers/runableShipments.dart';
 import 'package:flutter/material.dart';
 
