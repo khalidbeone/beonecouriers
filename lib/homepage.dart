@@ -67,10 +67,10 @@ class _HomepageState extends State<Homepage> {
                    const Row(
                       children: [
                         Expanded(
-                          child: MenuCards(cardIcon: Icons.handshake, cardLabel: 'Runable Shipments',),
+                          child: MenuCards(cardIndex: 0 , cardIcon:  Icons.handshake, cardLabel: 'Runable Shipments',),
                           ),
                           Expanded(
-                          child: MenuCards(cardIcon: Icons.track_changes, cardLabel: 'Pickable Shipments',),
+                          child: MenuCards(cardIndex: 1  ,cardIcon: Icons.track_changes, cardLabel: 'Pickable Shipments',),
                           ),
                       ],
                   ),
