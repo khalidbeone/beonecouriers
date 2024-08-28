@@ -1,5 +1,3 @@
-import 'package:beonecouriers/Box/sessionBox.dart';
-import 'package:beonecouriers/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'includes/menuTabs.dart';
 import 'includes/pageLabel.dart';
@@ -24,7 +22,7 @@ class _HomepageState extends State<Homepage> {
                           ),
                         );
 
-   return  isAuthed()? Scaffold(
+   return  Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -62,7 +60,7 @@ class _HomepageState extends State<Homepage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(15),
-                  child: Text('Welcome Back : ${box.read('name').toString()}', style:  TextStyle( color:Theme.of(context).primaryColor , fontWeight: FontWeight.bold) ,),
+                  child: Text('Welcome Back : ', style:  TextStyle( color:Theme.of(context).primaryColor , fontWeight: FontWeight.bold) ,),
                 ),
                    const Row(
                       children: [
@@ -80,6 +78,6 @@ class _HomepageState extends State<Homepage> {
           const MenuTabs(selectedIndex: 0),
         ],
       ) ,
-    ) : const LoginPage();
+    );
   }
 }

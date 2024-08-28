@@ -1,4 +1,4 @@
-import 'package:get_storage/get_storage.dart';
+// import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -12,7 +12,7 @@ const List<String> methods = ['login','refresh','logout' , 'profile'];
 
 
               
-GetStorage box = GetStorage();
+// GetStorage box = GetStorage();
 
 
  Future  authingFunction (email , password) async{
@@ -33,10 +33,10 @@ GetStorage box = GetStorage();
         print(data['data']['token_type']);
         print(courier['data']['id']);
         print(courier['data']['name']);
-        box.write('email', email);
-        box.write('token', data['data']['access_token']);
-        box.write('id', courier['data']['id']);
-        box.write('name', courier['data']['name']);
+        // box.write('email', email);
+        // box.write('token', data['data']['access_token']);
+        // box.write('id', courier['data']['id']);
+        // box.write('name', courier['data']['name']);
       }
     }
 
@@ -45,17 +45,17 @@ GetStorage box = GetStorage();
   }
 }
 
-bool isAuthed (){
-  if (box.read('authKey') != ''){
-    return true;
-  }
-  return false;
-}
+// bool isAuthed (){
+//   if (box.read('authKey') != ''){
+//     return true;
+//   }
+//   return false;
+// }
 
-bool removeAuth(){
-  if (box.read('authKey') !='' ){
-    box.erase();
-    return true;
-  }
-  return false;
-}
+// bool removeAuth(){
+//   if (box.read('authKey') !='' ){
+//     box.erase();
+//     return true;
+//   }
+//   return false;
+// }

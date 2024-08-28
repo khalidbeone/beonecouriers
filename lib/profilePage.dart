@@ -3,7 +3,6 @@ import 'package:beonecouriers/includes/menuTabs.dart';
 import 'package:beonecouriers/includes/pageLabel.dart';
 import 'package:beonecouriers/loginPage.dart';
 import 'package:flutter/material.dart';
-import 'Box/sessionBox.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -15,20 +14,10 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
 
 
-  void logout(){
-    setState(() {
-       removeAuth();
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginPage()));
-        print('removed');
-    });
-      // if( removeAuth()){
-      //   print('removed');
-      // }
-  }
 
   @override
   Widget build(BuildContext context) {
-    return  isAuthed()?  Scaffold(
+    return Scaffold(
         body: Column(
           children: [
             const BarCard(),
@@ -44,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: SizedBox(
                       width:250,
                       child: ElevatedButton(
-                            onPressed: logout ,
+                            onPressed: ( () {}) ,
                             style:  ElevatedButton.styleFrom(
                               backgroundColor: const Color.fromRGBO(255, 159, 67,1.0),
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)) ,
@@ -63,6 +52,6 @@ class _ProfilePageState extends State<ProfilePage> {
             const MenuTabs(selectedIndex:  2),
           ],
         ),
-    ) : const LoginPage();
+    ) ;
   }
 }

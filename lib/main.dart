@@ -1,11 +1,7 @@
-import 'package:beonecouriers/homepage.dart';
 import 'package:beonecouriers/loginPage.dart';
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
-import 'Box/sessionBox.dart';
 
-void main() async {
-  await GetStorage.init();
+void main()  {
   runApp(const MyApp());
 }
 
@@ -28,7 +24,7 @@ class MyApp extends StatelessWidget {
         primaryColor:Colors.deepPurple,
         useMaterial3: true,
       ),
-      home: isAuthed() ? const Homepage() : const LoginPage(),
+      home: const LoginPage(),
     );
   }
 }

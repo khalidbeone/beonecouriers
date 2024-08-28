@@ -2,7 +2,6 @@ import 'package:beonecouriers/includes/barCard.dart';
 import 'package:beonecouriers/includes/menuTabs.dart';
 import 'package:beonecouriers/includes/pageLabel.dart';
 import 'package:flutter/material.dart';
-import 'data/dataExample.dart';
 
 class PickableShipments extends StatefulWidget {
   const PickableShipments({super.key});
