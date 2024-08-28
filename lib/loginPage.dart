@@ -2,6 +2,11 @@ import 'package:beonecouriers/homepage.dart';
 import 'package:beonecouriers/includes/copyRights.dart';
 import 'package:flutter/material.dart';
 import 'Box/sessionBox.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -14,25 +19,57 @@ class _LoginPageState extends State<LoginPage> {
   final   TextEditingController _email = TextEditingController() ;
   final   TextEditingController _password = TextEditingController() ;
 
+   List<Map<String,dynamic>> courierInfo  = [];
+   List<Map<String,dynamic>> authInfo  = [];
+    
+    Future<Map<String, dynamic>>  authingFunction (email , password) async{
+        try{
+          final res = await http.post(
+            Uri.parse(demoBaseUrl + methods[0]),
+            headers: {"Content-Type": "application/json" , "Accept" : "application/json"} ,
+            body:jsonEncode({ "email" : email , "password" : password})
+          );
+          final data = jsonDecode(res.body);
+          if( data['status'] == 200 ){
+            final courierData  = await http.get(Uri.parse(demoBaseUrl + methods[3]),
+              headers: {"Content-Type": "application/json" , "Accept" : "application/json" , 'Authorization': data['data']['access_token'] },
+            );
+            final courier  = jsonDecode(courierData.body);
+            if( courier['status'] == 200 ){
+              setState(() {
+                authInfo = data ;
+                courierInfo = courier ;
+              });
+            }
+          }
+          return  data;
+        }catch(e){
+          throw  e.toString();
+        }
+      }
 
 
   void loginCourier(){
-    if(_email.text.toString() == '' || _password.text.toString() == '' ){
+    if( _email.text.toString() != '' || _password.text.toString() != ''){
+        // authingFunction(_email.text , _password.text);
+             print(authInfo['data']['access_token']);
+              print(authInfo['data']['token_type']);
+              print(courierInfo['data']['id']);
+              print(courierInfo['data']['name']);
+
+
+        if(box.read('email') != ''  && box.read('token') != '' ){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Homepage()));
+        }else{
+          ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content:  Text('Invalid Information | Contact Support ' , style: TextStyle(fontWeight: FontWeight.bold),) , backgroundColor: Colors.red,)
+              );    
+          }
+    }else{
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content:  Text('Invalid Information | Contact Support ' , style: TextStyle(fontWeight: FontWeight.bold),) , backgroundColor: Colors.red,)
       );
-    }else if( _email.text.toString() == 'khaleds@beone.sa' && _password.text.toString() == '123654'){
-        if ( authingFunction(_email.text)){
-          if (isAuthed()){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Homepage()));
-          }
-        }
-        
-      }else{
-         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content:  Text('Invalid Information | Contact Support ' , style: TextStyle(fontWeight: FontWeight.bold),) , backgroundColor: Colors.red,)
-        );
-      }
+    }
   }
 
   @override

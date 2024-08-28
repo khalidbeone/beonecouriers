@@ -62,7 +62,7 @@ class _HomepageState extends State<Homepage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(15),
-                  child: Text('Welcome Back : ${box.read('authKey').toString()}', style:  TextStyle( color:Theme.of(context).primaryColor , fontWeight: FontWeight.bold) ,),
+                  child: Text('Welcome Back : ${box.read('name').toString()}', style:  TextStyle( color:Theme.of(context).primaryColor , fontWeight: FontWeight.bold) ,),
                 ),
                    const Row(
                       children: [
