@@ -11,13 +11,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  var pref_token ;
-  @override
-  void setState(VoidCallback fn) async {
-    super.setState(fn);
-    final SharedPreferences? prefs  = await pref_token;
-  }  
-
+ 
   @override
   Widget build(BuildContext context) {
     const border = OutlineInputBorder(
@@ -66,7 +60,7 @@ class _HomepageState extends State<Homepage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(15),
-                  child: Text('Welcome Back :  $pref_token', style:  TextStyle( color:Theme.of(context).primaryColor , fontWeight: FontWeight.bold) ,),
+                  child: Text('Welcome Back :  ', style:  TextStyle( color:Theme.of(context).primaryColor , fontWeight: FontWeight.bold) ,),
                 ),
                    const Row(
                       children: [

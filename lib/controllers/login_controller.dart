@@ -15,48 +15,62 @@ class LoginController extends GetxController{
 
   Future<void> loginAuth() async {
     var headers = {"Content-Type": "application/json" , "Accept" : "application/json"};
+    if(emailController != '' && passwordController != ''){
+      try{
 
-  try{
+            var url = Uri.parse(demoBaseUrl + methods[0]);
 
-    var url = Uri.parse(demoBaseUrl + methods[0]);
+            Map body = {
+              "email": emailController.text.trim(),
+              "password" : passwordController.text
+            };
 
-    Map body = {
-      "email": emailController.text.trim(),
-      "password" : passwordController.text
-    };
+            http.Response response = await http.post(url , body : jsonEncode(body) , headers : headers);
 
-    http.Response response = await http.post(url , body : jsonEncode(body) , headers : headers);
+            if (response.statusCode == 200 ){
+              final data = jsonDecode(response.body);
+              if (data['status'] == 200 ){
+                var token = data['data']['access_token'];
+                final SharedPreferences? prefs = await _prefs;
+                await prefs?.setString('token', token);
 
-    if (response.statusCode == 200 ){
-      final data = jsonDecode(response.body);
-      if (data['status'] == 200 ){
-        var token = data['data']['access_token'];
-        final SharedPreferences? prefs = await _prefs;
-        await prefs?.setString('token', token);
+                emailController.clear();
+                passwordController.clear();
+                print(prefs?.get('token'));
+                //redirect to homepage 
+                Get.off(const Homepage());
+              }
+            }else{
+              throw jsonDecode(response.body)["message"] ??  "Contact IT Support Issue Happened";
+            }
 
-        emailController.clear();
-        passwordController.clear();
-        print(prefs?.get('token'));
-        //redirect to homepage 
-        Get.off(const Homepage());
-      }
+          }catch(e){
+            Get.back();
+            showDialog(
+              context: Get.context!, 
+                builder: (context){
+                  return  SimpleDialog(
+                    backgroundColor: Colors.red,
+                    contentPadding: const EdgeInsets.all(12),
+                    children: [  const Text('Error', style: TextStyle(color:Colors.white),) , const SizedBox(height:10) ,Text(e.toString() ,style: const TextStyle(color:Colors.white))],
+                  );
+                }
+              );
+          }
+        
     }else{
-      throw jsonDecode(response.body)["message"] ??  "Contact IT Support Issue Happened";
+            Get.back();
+            showDialog(
+              context: Get.context!, 
+                builder: (context){
+                  return  const SimpleDialog(
+                    backgroundColor: Colors.red,
+                    contentPadding:  EdgeInsets.all(12),
+                    children: [   Text('Error', style: TextStyle(color:Colors.white),) ,  SizedBox(height:10) ,Text('Invalid Inromation' , style:   TextStyle(color:Colors.white))],
+                  );
+                }
+              );
     }
-
-  }catch(e){
-    Get.back();
-    showDialog(
-      context: Get.context!, 
-        builder: (context){
-          return  SimpleDialog(
-            title:  const Text('Auth Error'),
-            contentPadding:  const EdgeInsets.all(10),
-            children: [Text(e.toString())],
-          );
-        }
-      );
-  }
-  }
+   }
 
 }
