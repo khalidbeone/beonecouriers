@@ -1,6 +1,8 @@
+import 'package:beonecouriers/homepage.dart';
 import 'package:beonecouriers/includes/copyRights.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'controllers/login_controller.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,7 +17,8 @@ class _LoginPageState extends State<LoginPage> {
    LoginController loginController = Get.put(LoginController());
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
+
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Center(
@@ -79,6 +82,6 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       ),
-    )  ;
+    ) ;
   }
 }
