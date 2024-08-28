@@ -1,7 +1,10 @@
 import 'package:beonecouriers/includes/barCard.dart';
 import 'package:beonecouriers/includes/menuTabs.dart';
 import 'package:beonecouriers/includes/pageLabel.dart';
+import 'package:beonecouriers/loginPage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -12,7 +15,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
 
-
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: SizedBox(
                       width:250,
                       child: ElevatedButton(
-                            onPressed: ( () {}) ,
+                            onPressed: () async {
+                              final SharedPreferences? prefs = await _prefs;
+                              prefs?.clear();
+                              Get.offAll(const LoginPage());
+                            } ,
                             style:  ElevatedButton.styleFrom(
                               backgroundColor: const Color.fromRGBO(255, 159, 67,1.0),
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)) ,

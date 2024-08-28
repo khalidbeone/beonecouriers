@@ -1,6 +1,7 @@
 import 'package:beonecouriers/includes/copyRights.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'controllers/login_controller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,10 +12,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
-  final   TextEditingController _email = TextEditingController() ;
-  final   TextEditingController _password = TextEditingController() ;
-
-   
+   LoginController loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                    TextField(
-                    controller: _email,
+                    controller: loginController.emailController,
                     decoration: const InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -46,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 20),
                    TextField(
-                    controller: _password,
+                    controller: loginController.passwordController,
                     decoration: const InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -60,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: SizedBox(
                       width: 250,
                       child: ElevatedButton(
-                        onPressed: ( (){ }),
+                        onPressed: () => loginController.loginAuth(),
                         style:  ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromRGBO(255, 159, 67,1.0),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)) ,
