@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'package:beonecouriers/homepage.dart';
-import 'package:flutter/material.dart';
 import '../Core/apiCore.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -20,13 +18,13 @@ class ProfileController extends GetxController {
     };
     var url = Uri.parse(demoBaseUrl + methods[3]);
     try {
-      print(token);
+      // print(token);
       final res = await http.get(url,headers: headers);
       final data = jsonDecode(res.body);
-      print(res.body);
-      if (data['status'] == 200 ){
-        print (data);
-      }
+      // print(res.body);
+      // if (data['status'] == 200 ){
+      //   // print (data);
+      // }
       // if (res.statusCode == 200) {
       //   final SharedPreferences? prefId = await _prefs;
       //   await prefId?.setString('id', data['data']['id']);

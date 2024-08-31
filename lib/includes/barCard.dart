@@ -1,5 +1,6 @@
 import 'package:beonecouriers/homepage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BarCard extends StatefulWidget {
   const BarCard({super.key});
@@ -10,7 +11,7 @@ class BarCard extends StatefulWidget {
 
 class _BarCardState extends State<BarCard> {
   void goHomepage(){
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Homepage()));
+    Get.to(const Homepage());
   }
   @override
   Widget build(BuildContext context) {
