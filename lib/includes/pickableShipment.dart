@@ -6,6 +6,9 @@ class PickableShipment extends StatefulWidget {
   final String referenceNo;
   final String senderName;
   final String senderPhone;
+  final String lang;
+  final String lat;
+  final String status;
 
   const PickableShipment(
       {super.key,
@@ -13,7 +16,10 @@ class PickableShipment extends StatefulWidget {
       required this.address,
       required this.referenceNo,
       required this.senderName,
-      required this.senderPhone
+      required this.senderPhone,
+      required this.lang,
+      required this.lat,
+      required this.status
       });
 
   @override

@@ -106,6 +106,9 @@ class _PickableShipmentstate extends State<PickableShipments> {
                                       ['sender_name'],
                                   senderPhone: data['data'][index]
                                       ['sender_phone'],
+                                  lang: data['data'][index]['longitude'],
+                                  lat:  data['data'][index]['latitude'],
+                                  status:  data['data'][index]['current_status'],
                                 );
                               });
                         }),
