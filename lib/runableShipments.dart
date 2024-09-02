@@ -58,8 +58,11 @@ class _RunableShipmentsState extends State<RunableShipments> {
                           return RunableShipment(
                             awbNo: data['data'][index]['shipments']['awb_no'],
                             referenceNo: data['data'][index]['shipments']['reference_number'] ,
-                            recName:  data['data'][index]['shipments']['receiver']['name'], 
-                            address: data['data'][index]['shipments']['receiver']['address'] ,
+                            recName:  data['data'][index]['receiver']['name'], 
+                            address: data['data'][index]['receiver']['address'] ,
+                            senderName: data['data'][index]['shipments']['sender'],
+                            recPhone: data['data'][index]['receiver']['phone'] ,
+                            codAmount: data['data'][index]['shipments']['cod_fees'],
                             );
                       });
                     }),

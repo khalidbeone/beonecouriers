@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RunableShipment extends StatefulWidget {
+class PickableShipment extends StatefulWidget {
   final String awbNo;
   final String address;
   final String referenceNo;
@@ -9,7 +9,7 @@ class RunableShipment extends StatefulWidget {
   final String senderName;
   final String recPhone;
 
-  const RunableShipment(
+  const PickableShipment(
       {super.key,
       required this.awbNo,
       required this.address,
@@ -21,10 +21,10 @@ class RunableShipment extends StatefulWidget {
       });
 
   @override
-  State<RunableShipment> createState() => _RunableShipmentState();
+  State<PickableShipment> createState() => _PickableShipmentState();
 }
 
-class _RunableShipmentState extends State<RunableShipment> {
+class _PickableShipmentState extends State<PickableShipment> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
