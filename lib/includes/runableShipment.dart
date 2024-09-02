@@ -98,8 +98,14 @@ class _RunableShipmentState extends State<RunableShipment> {
                           color: Color.fromRGBO(155, 155, 155, 1), size: 14),
                     ),
                     SizedBox(
+                      width: 300,
                       height: 15,
-                      child: Text(widget.address),
+                      child: Text(
+                        widget.address,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontSize: 11),
+                        ),
                     ),
                   ],
                 ),

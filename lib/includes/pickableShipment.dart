@@ -4,20 +4,16 @@ class PickableShipment extends StatefulWidget {
   final String awbNo;
   final String address;
   final String referenceNo;
-  final String recName;
-  final String codAmount;
   final String senderName;
-  final String recPhone;
+  final String senderPhone;
 
   const PickableShipment(
       {super.key,
       required this.awbNo,
       required this.address,
       required this.referenceNo,
-      required this.recName,
-      required this.codAmount,
       required this.senderName,
-      required this.recPhone
+      required this.senderPhone
       });
 
   @override
@@ -37,9 +33,11 @@ class _PickableShipmentState extends State<PickableShipment> {
           child: Column(
             children: [
               Text(widget.awbNo,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       color: Theme.of(context).primaryColor,
-                      fontSize: 18,
+                      fontSize: 18, 
                       fontWeight: FontWeight.bold)),
               const SizedBox(height: 5),
               Text(
@@ -66,7 +64,10 @@ class _PickableShipmentState extends State<PickableShipment> {
                         ),
                         SizedBox(
                           height: 15,
-                          child: Text(widget.senderName),
+                          child: Text(widget.senderName ,  
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                          style:  const TextStyle(fontSize: 12),),
                         ),
                       ],
                     )),
@@ -75,13 +76,13 @@ class _PickableShipmentState extends State<PickableShipment> {
                       children: [
                         Container(
                           margin: const EdgeInsets.all(5),
-                          child: const Icon(Icons.person_4,
+                          child: const Icon(Icons.phone,
                               color: Color.fromRGBO(155, 155, 155, 1),
                               size: 14),
                         ),
                         SizedBox(
                           height: 15,
-                          child: Text(widget.recName),
+                          child: Text(widget.senderPhone , style: const TextStyle( fontSize: 12),),
                         ),
                       ],
                     )),
@@ -98,38 +99,14 @@ class _PickableShipmentState extends State<PickableShipment> {
                           color: Color.fromRGBO(155, 155, 155, 1), size: 14),
                     ),
                     SizedBox(
+                      width: 300,
                       height: 15,
-                      child: Text(widget.address),
+                      child: Text(
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      widget.address ,
+                      style: const TextStyle(fontSize: 11),),
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                   Expanded(child: Row(children: [
-                     Container(
-                      margin: const EdgeInsets.all(5),
-                      child: const Icon(Icons.phone,
-                          color: Color.fromRGBO(155, 155, 155, 1), size: 14),
-                    ),
-                    SizedBox(
-                      height: 15,
-                      child: Text(widget.recPhone),
-                    ),
-                   ],)),
-                   Expanded(child: Row(children: [
-                     Container(
-                      margin: const EdgeInsets.all(5),
-                      child: const Icon(Icons.payment,
-                          color: Color.fromRGBO(155, 155, 155, 1), size: 14),
-                    ),
-                    SizedBox(
-                      height: 15,
-                      child: Text('COD : ${widget.codAmount}'),
-                    ),
-                   ],))
                   ],
                 ),
               ),
