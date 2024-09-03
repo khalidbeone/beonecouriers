@@ -56,6 +56,7 @@ class _RunableShipmentsState extends State<RunableShipments> {
                         itemCount: data['data'].length,
                         itemBuilder: (context , index){
                           return RunableShipment(
+                            shipId: data['data'][index]['shipments']['id'],
                             awbNo: data['data'][index]['shipments']['awb_no'],
                             referenceNo: data['data'][index]['shipments']['reference_number'] ,
                             recName:  data['data'][index]['receiver']['name'], 

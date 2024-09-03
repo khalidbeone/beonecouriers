@@ -1,9 +1,12 @@
 import 'package:beonecouriers/includes/barCard.dart';
 import 'package:beonecouriers/includes/menuTabs.dart';
 import 'package:beonecouriers/includes/pageLabel.dart';
+import 'package:beonecouriers/noDeliveredPage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ShipDetailsPage extends StatefulWidget {
+  final int shipId;
   final String awbNo;
   final String referenceNo;
   final String sender;
@@ -15,6 +18,7 @@ class ShipDetailsPage extends StatefulWidget {
 
   const ShipDetailsPage(
       {super.key,
+      required this.shipId,
       required this.awbNo,
       required this.referenceNo,
       required this.sender,
@@ -214,7 +218,7 @@ class __ShipDetailsPagStateState extends State<ShipDetailsPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       onPressed: (() {
-                        print('action want to be taken');
+                        Get.to(NotDeliveredPage(shipId: widget.shipId,));
                       }),
                       style:  ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 184, 64, 17),

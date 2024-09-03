@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../shipDetails.dart';
 
 class RunableShipment extends StatefulWidget {
+  final int shipId;
   final String awbNo;
   final String address;
   final String referenceNo;
@@ -16,6 +17,7 @@ class RunableShipment extends StatefulWidget {
 
   const RunableShipment(
       {super.key,
+      required this.shipId,
       required this.awbNo,
       required this.address,
       required this.referenceNo,
@@ -38,6 +40,7 @@ class _RunableShipmentState extends State<RunableShipment> {
     return GestureDetector(
       onTap: (() {
         Get.to(ShipDetailsPage(
+          shipId: widget.shipId, 
           awbNo: widget.awbNo, 
           referenceNo: widget.referenceNo, 
           sender: widget.senderName, 
