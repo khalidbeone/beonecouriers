@@ -63,6 +63,9 @@ class _RunableShipmentsState extends State<RunableShipments> {
                             senderName: data['data'][index]['shipments']['sender'],
                             recPhone: data['data'][index]['receiver']['phone'] ,
                             codAmount: data['data'][index]['shipments']['cod_fees'],
+                            city: data['data'][index]['receiver']['city'],
+                            lang: data['data'][index]['receiver']['longitude'],
+                            lat: data['data'][index]['receiver']['latitude'],
                             );
                       });
                     }),

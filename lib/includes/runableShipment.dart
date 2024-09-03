@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../shipDetails.dart';
 
 class RunableShipment extends StatefulWidget {
   final String awbNo;
@@ -8,6 +10,9 @@ class RunableShipment extends StatefulWidget {
   final String codAmount;
   final String senderName;
   final String recPhone;
+  final String city; 
+  final String lang;
+  final String lat;
 
   const RunableShipment(
       {super.key,
@@ -17,7 +22,10 @@ class RunableShipment extends StatefulWidget {
       required this.recName,
       required this.codAmount,
       required this.senderName,
-      required this.recPhone
+      required this.recPhone,
+      required this.city,
+      required this.lang,
+      required this.lat
       });
 
   @override
@@ -29,7 +37,18 @@ class _RunableShipmentState extends State<RunableShipment> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (() {
-        print("Clicked AWB");
+        Get.to(ShipDetailsPage(
+          awbNo: widget.awbNo, 
+          referenceNo: widget.referenceNo, 
+          sender: widget.senderName, 
+          receiver: widget.recName, 
+          phone: widget.recPhone, 
+          city: widget.city, 
+          address: widget.address, 
+          long: widget.lang, 
+          lat: widget.lat, 
+          cod: widget.codAmount
+          ));
       }),
       child: Card(
         child: Padding(
@@ -110,35 +129,35 @@ class _RunableShipmentState extends State<RunableShipment> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                   Expanded(child: Row(children: [
-                     Container(
-                      margin: const EdgeInsets.all(5),
-                      child: const Icon(Icons.phone,
-                          color: Color.fromRGBO(155, 155, 155, 1), size: 14),
-                    ),
-                    SizedBox(
-                      height: 15,
-                      child: Text(widget.recPhone),
-                    ),
-                   ],)),
-                   Expanded(child: Row(children: [
-                     Container(
-                      margin: const EdgeInsets.all(5),
-                      child: const Icon(Icons.payment,
-                          color: Color.fromRGBO(155, 155, 155, 1), size: 14),
-                    ),
-                    SizedBox(
-                      height: 15,
-                      child: Text('COD : ${widget.codAmount}'),
-                    ),
-                   ],))
-                  ],
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Row(
+              //     children: [
+              //      Expanded(child: Row(children: [
+              //        Container(
+              //         margin: const EdgeInsets.all(5),
+              //         child: const Icon(Icons.phone,
+              //             color: Color.fromRGBO(155, 155, 155, 1), size: 14),
+              //       ),
+              //       SizedBox(
+              //         height: 15,
+              //         child: Text(widget.recPhone),
+              //       ),
+              //      ],)),
+              //      Expanded(child: Row(children: [
+              //        Container(
+              //         margin: const EdgeInsets.all(5),
+              //         child: const Icon(Icons.payment,
+              //             color: Color.fromRGBO(155, 155, 155, 1), size: 14),
+              //       ),
+              //       SizedBox(
+              //         height: 15,
+              //         child: Text('COD : ${widget.codAmount}'),
+              //       ),
+              //      ],))
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),
