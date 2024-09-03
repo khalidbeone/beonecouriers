@@ -1,8 +1,6 @@
-import 'package:beonecouriers/homepage.dart';
 import 'package:beonecouriers/includes/copyRights.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'controllers/login_controller.dart';
 
 class LoginPage extends StatefulWidget {
