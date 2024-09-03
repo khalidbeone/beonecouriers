@@ -218,7 +218,7 @@ class __ShipDetailsPagStateState extends State<ShipDetailsPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       onPressed: (() {
-                        Get.to(NotDeliveredPage(shipId: widget.shipId,));
+                        Get.to(NotDeliveredPage(shipId: widget.shipId, awb: widget.awbNo,));
                       }),
                       style:  ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 184, 64, 17),
