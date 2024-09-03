@@ -45,8 +45,6 @@ class _RunableShipmentState extends State<RunableShipment> {
           phone: widget.recPhone, 
           city: widget.city, 
           address: widget.address, 
-          long: widget.lang, 
-          lat: widget.lat, 
           cod: widget.codAmount
           ));
       }),
@@ -91,19 +89,20 @@ class _RunableShipmentState extends State<RunableShipment> {
                     )),
                     Expanded(
                         child: Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.all(5),
-                          child: const Icon(Icons.person_4,
-                              color: Color.fromRGBO(155, 155, 155, 1),
-                              size: 14),
-                        ),
-                        SizedBox(
-                          height: 15,
-                          child: Text(widget.recName),
-                        ),
-                      ],
-                    )),
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.all(5),
+                            child: const Icon(Icons.person_4,
+                                color: Color.fromRGBO(155, 155, 155, 1),
+                                size: 14),
+                          ),
+                          SizedBox(
+                            height: 15,
+                            child: Text(widget.recName),
+                          ),
+                        ],
+                      )
+                    ),
                   ],
                 ),
               ),

@@ -20,7 +20,8 @@ class ProfileController extends GetxController {
     try {
       // print(token);
       final res = await http.get(url,headers: headers);
-      final data = jsonDecode(res.body);
+      var data = jsonDecode(res.body);
+     
       // print(res.body);
       // if (data['status'] == 200 ){
       //   // print (data);
