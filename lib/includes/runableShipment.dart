@@ -12,8 +12,7 @@ class RunableShipment extends StatefulWidget {
   final String senderName;
   final String recPhone;
   final String city; 
-  final String lang;
-  final String lat;
+
 
   const RunableShipment(
       {super.key,
@@ -26,8 +25,6 @@ class RunableShipment extends StatefulWidget {
       required this.senderName,
       required this.recPhone,
       required this.city,
-      required this.lang,
-      required this.lat
       });
 
   @override
