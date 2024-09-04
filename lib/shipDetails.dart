@@ -1,3 +1,4 @@
+import 'package:beonecouriers/deliveredPage.dart';
 import 'package:beonecouriers/includes/barCard.dart';
 import 'package:beonecouriers/includes/menuTabs.dart';
 import 'package:beonecouriers/includes/pageLabel.dart';
@@ -187,8 +188,8 @@ class __ShipDetailsPagStateState extends State<ShipDetailsPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       onPressed: (() {
-                        print('action want to be taken');
-                      }),
+                          Get.to(DeliveredPage(shipId: widget.shipId, awb: widget.awbNo,));  
+                    }),
                       style:  ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 15, 122, 58),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)) ,
