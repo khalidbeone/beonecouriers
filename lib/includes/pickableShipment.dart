@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../pickDetailsPage.dart';
 
 class PickableShipment extends StatefulWidget {
   final String awbNo;
@@ -6,8 +9,6 @@ class PickableShipment extends StatefulWidget {
   final String referenceNo;
   final String senderName;
   final String senderPhone;
-  final String lang;
-  final String lat;
   final String status;
 
   const PickableShipment(
@@ -17,8 +18,6 @@ class PickableShipment extends StatefulWidget {
       required this.referenceNo,
       required this.senderName,
       required this.senderPhone,
-      required this.lang,
-      required this.lat,
       required this.status
       });
 
@@ -31,7 +30,13 @@ class _PickableShipmentState extends State<PickableShipment> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (() {
-        print("Clicked AWB");
+        Get.to(PickDetailsPage(
+          awbNo : widget.awbNo,
+          address : widget.address,
+          referenceNo : widget.referenceNo,
+          senderName: widget.senderName,
+          senderPhone: widget.senderPhone
+         ));
       }),
       child: Card(
         child: Padding(

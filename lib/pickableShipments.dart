@@ -47,22 +47,7 @@ class _PickableShipmentstate extends State<PickableShipments> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5)),
                                 ),
-                                child: const Text('Single Pickup' , style: TextStyle(color: Colors.white),),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SizedBox(
-                              child: ElevatedButton(
-                                onPressed: (() {}),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      const Color.fromRGBO(255, 159, 67, 1.0),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5)),
-                                ),
-                                child: const Text('Bulk Pickup' , style: TextStyle(color: Colors.white),),
+                                child: const Text(' Quick Pickup ' , style: TextStyle(color: Colors.white),),
                               ),
                             ),
                           ),
@@ -106,8 +91,6 @@ class _PickableShipmentstate extends State<PickableShipments> {
                                       ['sender_name'],
                                   senderPhone: data['data'][index]
                                       ['sender_phone'],
-                                  lang: data['data'][index]['longitude'],
-                                  lat:  data['data'][index]['latitude'],
                                   status:  data['data'][index]['current_status'],
                                 );
                               });

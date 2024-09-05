@@ -36,7 +36,7 @@ class _NotDeliveredPageState extends State<NotDeliveredPage> {
             const Text('Choose the reason please  ' , style:  TextStyle(color:Colors.white),),
             const SizedBox(height:10),
             ElevatedButton(
-              onPressed: ( () => deliveryActionsController.notDelivered(widget.shipId , 2) ), // change here the reason after listing it 
+              onPressed: ( () => deliveryActionsController.notDelivered(widget.shipId , 32) ), // change here the reason after listing it 
                child: 
                 const Text('Confirm not Delivered !' , style: TextStyle(color:Colors.red , fontWeight: FontWeight.bold),)
                ),
