@@ -105,11 +105,13 @@ class _PickDetailsPageState extends State<PickDetailsPage> {
                               'Address : ',
                               style: TextStyle(color: Colors.purple),
                             ),
-                            Text(
-                              widget.address,
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(fontSize: 13),
+                            SizedBox(
+                              width: 230,
+                              child: Text(
+                                widget.address,
+                                softWrap: true,
+                                style: const TextStyle(fontSize: 13),
+                              ),
                             )
                           ],
                         ),
