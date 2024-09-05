@@ -1,5 +1,6 @@
 import 'package:beonecouriers/controllers/deliverActions_controller.dart';
 import 'package:beonecouriers/controllers/reasons_controller.dart';
+import 'package:beonecouriers/customerDropDown.dart';
 import 'package:beonecouriers/runableShipments.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +22,8 @@ class _NotDeliveredPageState extends State<NotDeliveredPage> {
 
   ReasonsController reasonsController = Get.put(ReasonsController());
   DeliveryActionsController deliveryActionsController = Get.put(DeliveryActionsController());
-  
+
+   
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,12 @@ class _NotDeliveredPageState extends State<NotDeliveredPage> {
             Text(widget.awb , style: const TextStyle(fontWeight: FontWeight.bold , color : Colors.white)),
             const Text('Are you sure this shipment not delivered ? ' , style:  TextStyle(color:Colors.white),),
             const Text('Choose the reason please  ' , style:  TextStyle(color:Colors.white),),
+            const SizedBox(height:10),
+            // start of dropdown 
+
+            
+
+            // end of drop down 
             const SizedBox(height:10),
             ElevatedButton(
               onPressed: ( () => deliveryActionsController.notDelivered(widget.shipId , 32) ), // change here the reason after listing it 
