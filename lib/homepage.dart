@@ -52,15 +52,11 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
           const PageLabel(subject: 'Homepage'),
-           Expanded(
+           const Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Text('Welcome Back :  ', style:  TextStyle( color:Theme.of(context).primaryColor , fontWeight: FontWeight.bold) ,),
-                ),
-                   const Row(
+                    Row(
                       children: [
                         Expanded(
                           child: MenuCards(cardIndex: 0 , cardIcon:  Icons.handshake, cardLabel: 'Runable Shipments',),
