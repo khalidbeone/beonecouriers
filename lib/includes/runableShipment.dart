@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../shipDetails.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RunableShipment extends StatefulWidget {
   final int shipId;
@@ -32,8 +33,27 @@ class RunableShipment extends StatefulWidget {
 }
 
 class _RunableShipmentState extends State<RunableShipment> {
+  
+    openDialPad(String phoneNumber) async {
+    Uri url = Uri(scheme: "tel", path: phoneNumber);
+    if (await launchUrl(url)) {
+    } else {
+       print("Can't open dial pad.");
+    }
+}
+
+
   @override
   Widget build(BuildContext context) {
+    
+
+
+  final String courierMsg  = "مرحباً عميل بي وان العزيز بشحنة رقم : ${widget.awbNo}  أو أعلامكم بانه في طريقي اليكم لتوصيل الشحنه ,, أرجو تزويدي بالعنوان من خلال مشاركته في هذه المحادثة ";
+
+  var whatsappUrl =
+        "whatsapp://send?phone=${widget.recPhone}" +
+            "&text=${Uri.encodeComponent(courierMsg)}";
+
     return GestureDetector(
       onTap: (() {
         Get.to(ShipDetailsPage(
@@ -50,7 +70,7 @@ class _RunableShipmentState extends State<RunableShipment> {
       }),
       child: Card(
         child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(7),
           child: Column(
             children: [
               Text(widget.awbNo,
@@ -67,14 +87,14 @@ class _RunableShipmentState extends State<RunableShipment> {
                     fontWeight: FontWeight.bold),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(5),
                 child: Row(
                   children: [
                     Expanded(
                         child: Row(
                       children: [
                         Container(
-                          margin: const EdgeInsets.all(5),
+                          margin: const EdgeInsets.all(3),
                           child: const Icon(
                             Icons.person_4,
                             color: Color.fromRGBO(155, 155, 155, 1),
@@ -91,7 +111,7 @@ class _RunableShipmentState extends State<RunableShipment> {
                         child: Row(
                         children: [
                           Container(
-                            margin: const EdgeInsets.all(5),
+                            margin: const EdgeInsets.all(3),
                             child: const Icon(Icons.person_4,
                                 color: Color.fromRGBO(155, 155, 155, 1),
                                 size: 14),
@@ -107,11 +127,11 @@ class _RunableShipmentState extends State<RunableShipment> {
                 ),
               ),
               Padding(
-                padding : const EdgeInsets.all(8),
+                padding : const EdgeInsets.all(3),
                 child: Row(
                   children: [
                       Container(
-                      margin: const EdgeInsets.all(5),
+                      margin: const EdgeInsets.all(3),
                       child: const Icon(Icons.location_pin,
                           color: Color.fromRGBO(155, 155, 155, 1), size: 14),
                     ),
@@ -121,6 +141,7 @@ class _RunableShipmentState extends State<RunableShipment> {
                       child: Text(
                         widget.address,
                         maxLines: 3,
+                        softWrap: true,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(fontSize: 11),
                         ),
@@ -128,35 +149,46 @@ class _RunableShipmentState extends State<RunableShipment> {
                   ],
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: Row(
-              //     children: [
-              //      Expanded(child: Row(children: [
-              //        Container(
-              //         margin: const EdgeInsets.all(5),
-              //         child: const Icon(Icons.phone,
-              //             color: Color.fromRGBO(155, 155, 155, 1), size: 14),
-              //       ),
-              //       SizedBox(
-              //         height: 15,
-              //         child: Text(widget.recPhone),
-              //       ),
-              //      ],)),
-              //      Expanded(child: Row(children: [
-              //        Container(
-              //         margin: const EdgeInsets.all(5),
-              //         child: const Icon(Icons.payment,
-              //             color: Color.fromRGBO(155, 155, 155, 1), size: 14),
-              //       ),
-              //       SizedBox(
-              //         height: 15,
-              //         child: Text('COD : ${widget.codAmount}'),
-              //       ),
-              //      ],))
-              //     ],
-              //   ),
-              // ),
+              Padding(
+                padding: const EdgeInsets.all(3),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(3),
+                      child:  ElevatedButton(
+                                onPressed: ()  async {
+                                  if (await launchUrl(Uri.parse(whatsappUrl))) {
+                                      } else {
+                                        print("cant open whats app.");
+                                      }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 8, 114, 65),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                ),
+                                child: const Icon(Icons.message , size: 12 , color: Colors.white,),
+                              ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(3),
+                      child:  ElevatedButton(
+                                onPressed: (() {
+                                 openDialPad(widget.recPhone.toString());
+                                }),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 40, 8, 114),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                ),
+                                child: const Icon(Icons.call , size: 12 , color: Colors.white,),
+                              ),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
