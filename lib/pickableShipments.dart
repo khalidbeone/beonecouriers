@@ -3,6 +3,7 @@ import 'package:beonecouriers/includes/barCard.dart';
 import 'package:beonecouriers/includes/menuTabs.dart';
 import 'package:beonecouriers/includes/pageLabel.dart';
 import 'package:beonecouriers/includes/pickableShipment.dart';
+import 'package:beonecouriers/quickPickup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +41,7 @@ class _PickableShipmentstate extends State<PickableShipments> {
                             padding: const EdgeInsets.all(8.0),
                             child: SizedBox(
                               child: ElevatedButton(
-                                onPressed: (() {}),
+                                onPressed: (() { Get.to(const QuickPickupPage()) ; }),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
                                       const Color.fromRGBO(255, 159, 67, 1.0),
