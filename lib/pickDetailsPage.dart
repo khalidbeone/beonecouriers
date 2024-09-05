@@ -1,4 +1,6 @@
+import 'package:beonecouriers/controllers/pickup_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'includes/barCard.dart';
 import 'includes/menuTabs.dart';
@@ -25,6 +27,12 @@ class PickDetailsPage extends StatefulWidget {
 }
 
 class _PickDetailsPageState extends State<PickDetailsPage> {
+
+
+  PickupActionController pickupActionController = Get.put(PickupActionController());
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,7 +139,7 @@ class _PickDetailsPageState extends State<PickDetailsPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       onPressed: (() {
-                          print('shipment is picked ');  
+                          pickupActionController.pickedUp(widget.awbNo);  
                     }),
                       style:  ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 15, 122, 58),
