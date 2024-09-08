@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class PicklistController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  String shiplength = '0';
 
   Future<Map<String, dynamic>> getPicklist() async {
     final SharedPreferences prefs = await _prefs;
@@ -20,6 +21,7 @@ class PicklistController extends GetxController {
       // print(token);
       final res = await http.get(url, headers: headers);
       final data = jsonDecode(res.body);
+      shiplength = data['data'].length.toString();
       return data;
     } catch (e) {
       throw e.toString();

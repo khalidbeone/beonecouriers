@@ -10,6 +10,9 @@ class DrsController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   RefreshController refreshController = Get.put(RefreshController());
+  String shiplength = '0';
+
+ 
   Future<Map<String, dynamic>> getDRS() async {
     final SharedPreferences prefs = await _prefs;
     var token = prefs?.getString('token').toString();
@@ -23,6 +26,7 @@ class DrsController extends GetxController {
       // print(token);
       final res = await http.get(url, headers: headers);
       final data = jsonDecode(res.body);
+      shiplength = data['data'].length.toString();
       return data;
     } catch (e) {
       throw e.toString();

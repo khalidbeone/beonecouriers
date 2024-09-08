@@ -81,6 +81,7 @@ class _PickableShipmentstate extends State<PickableShipments> {
                     ],
                   ),
                 ),
+                Text('Count :  ${picklistController.shiplength} shipment' , style: const TextStyle(fontWeight: FontWeight.bold , color: Colors.purple),),
                 // create search input here to get the AWB fast
                 Expanded(
                   child: Padding(
@@ -103,7 +104,6 @@ class _PickableShipmentstate extends State<PickableShipments> {
                             );
                           }
                           final data = snapshot.data!;
-                          print(data['data'].length);
                           return ListView.builder(
                               scrollDirection: Axis.vertical,
                               itemCount: data['data'].length,

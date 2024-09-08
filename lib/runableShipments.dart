@@ -30,6 +30,7 @@ class _RunableShipmentsState extends State<RunableShipments> {
                   alignment: Alignment.centerLeft,
                   child: const PageLabel(subject: 'My Runable Shipments'),
                 ),
+                Text('Count :  ${drsController.shiplength} shipment' , style: const TextStyle(fontWeight: FontWeight.bold , color: Colors.purple),),
                 // create search input here to get the AWB fast
                Expanded(
                  child: Padding(
