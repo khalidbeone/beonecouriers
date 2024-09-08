@@ -14,7 +14,7 @@ class DeliveryActionsController extends GetxController {
 
   Future<void> notDelivered(shipId , reasonId) async {
     
-    final  SharedPreferences? prefs = await _prefs;
+    final  SharedPreferences prefs = await _prefs;
     var token = prefs?.getString('token').toString();
     var headers = {
       "Content-Type": "application/json",
@@ -106,7 +106,7 @@ class DeliveryActionsController extends GetxController {
 
  Future<void> deliveredShipment(shipId) async {
     
-    final  SharedPreferences? prefs = await _prefs;
+    final  SharedPreferences prefs = await _prefs;
     var token = prefs?.getString('token').toString();
     var headers = {
       "Content-Type": "application/json",

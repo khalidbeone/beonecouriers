@@ -51,8 +51,7 @@ class _RunableShipmentState extends State<RunableShipment> {
   final String courierMsg  = "مرحباً عميل بي وان العزيز بشحنة رقم : ${widget.awbNo}  أو أعلامكم بانه في طريقي اليكم لتوصيل الشحنه ,, أرجو تزويدي بالعنوان من خلال مشاركته في هذه المحادثة ";
 
   var whatsappUrl =
-        "whatsapp://send?phone=${widget.recPhone}" +
-            "&text=${Uri.encodeComponent(courierMsg)}";
+        "whatsapp://send?phone=${widget.recPhone}" "&text=${Uri.encodeComponent(courierMsg)}";
 
     return GestureDetector(
       onTap: (() {

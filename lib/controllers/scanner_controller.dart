@@ -13,7 +13,7 @@ class ScannerActionController extends GetxController {
 
   Future<void> pickedUp(shipId ) async {
     
-    final  SharedPreferences? prefs = await _prefs;
+    final  SharedPreferences prefs = await _prefs;
 
     var token = prefs?.getString('token').toString();
     var headers = {

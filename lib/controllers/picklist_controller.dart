@@ -8,7 +8,7 @@ class PicklistController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   Future<Map<String, dynamic>> getPicklist() async {
-    final SharedPreferences? prefs = await _prefs;
+    final SharedPreferences prefs = await _prefs;
     var token = prefs?.getString('token').toString();
     var headers = {
       "Content-Type": "application/json",

@@ -33,7 +33,7 @@ class LoginController extends GetxController {
           final data = jsonDecode(response.body);
           if (data['status'] == 200) {
             var token = data['data']['access_token'];
-            final SharedPreferences? prefs = await _prefs;
+            final SharedPreferences prefs = await _prefs;
             await prefs?.setString('token', token);
 
             emailController.clear();
