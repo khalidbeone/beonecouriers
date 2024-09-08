@@ -16,9 +16,8 @@ class DeliveryActionsController extends GetxController {
 
 
   Future<void> notDelivered(shipId , reasonId) async {
-    refreshController.refreshToken();
     final  SharedPreferences prefs = await _prefs;
-    var token = prefs?.getString('refresh').toString();
+    var token = prefs?.getString('token').toString();
     var headers = {
       "Content-Type": "application/json",
       "Accept": "application/json",
@@ -109,13 +108,12 @@ class DeliveryActionsController extends GetxController {
 
 
  Future<void> deliveredShipment(shipId) async {
-    var refresh = refreshController.refreshToken();
     final  SharedPreferences prefs = await _prefs;
     var token = prefs?.getString('token').toString();
     var headers = {
       "Content-Type": "application/json",
       "Accept": "application/json",
-      'Authorization': 'Bearer ${refresh.toString()}',
+      'Authorization': 'Bearer $token',
 
     };
     if (shipId != '' && otpEditingController.text.toString() != '') {
