@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:beonecouriers/controllers/authcheckCotnroller.dart';
 import 'package:beonecouriers/controllers/refreshToken_controller.dart';
+import 'package:beonecouriers/homepage.dart';
 import 'package:beonecouriers/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +20,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   RefreshController refreshController = Get.put(RefreshController());
+  AuthCheckController authCheckController = Get.put(AuthCheckController());
 
   Timer? _timer;
 
@@ -28,7 +31,7 @@ class _MyAppState extends State<MyApp> {
     refreshController.refreshToken();
 
     // Set up the timer to refresh the token every hour
-    _timer = Timer.periodic(const Duration(minutes: 1), (timer) {
+    _timer = Timer.periodic(const Duration(minutes: 40), (timer) {
       var token = refreshController.refreshToken();
       print(token);
     });
@@ -57,7 +60,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor:Colors.deepPurple,
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home: authCheckController.isAuthed.toString()  != '' ? const  Homepage() : const LoginPage(),
     );
   }
 }
