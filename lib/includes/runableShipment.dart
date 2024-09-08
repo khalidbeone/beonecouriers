@@ -100,9 +100,16 @@ class _RunableShipmentState extends State<RunableShipment> {
                             size: 14,
                           ),
                         ),
-                        SizedBox(
+                       SizedBox(
+                          width: 100,
                           height: 15,
-                          child: Text(widget.senderName),
+                          child: Text(
+                            widget.senderName,
+                            maxLines: 2,
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontSize: 11),
+                            ),
                         ),
                       ],
                     )),
@@ -116,9 +123,16 @@ class _RunableShipmentState extends State<RunableShipment> {
                                 size: 14),
                           ),
                           SizedBox(
-                            height: 15,
-                            child: Text(widget.recName),
-                          ),
+                          width: 100,
+                          height: 15,
+                          child: Text(
+                            widget.recName,
+                            maxLines: 2,
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontSize: 11),
+                            ),
+                        ),
                         ],
                       )
                     ),
