@@ -27,6 +27,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+      // print ('Tt [[ ${authCheckController.checkAuthing.toString()} ]]');
+
     // Immediately refresh the token when the app starts
     refreshController.refreshToken();
 
@@ -60,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor:Colors.deepPurple,
         useMaterial3: true,
       ),
-      home: authCheckController.isAuthed.toString()  != '' ? const  Homepage() : const LoginPage(),
+      home: authCheckController.checkAuthing.toString().indexOf('Closure')  > 0  ?   const  Homepage()  :     const LoginPage() ,
     );
   }
 }
