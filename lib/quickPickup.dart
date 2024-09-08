@@ -4,7 +4,6 @@ import 'package:beonecouriers/includes/pageLabel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
-
 import 'includes/menuTabs.dart';
 
 class QuickPickupPage extends StatefulWidget {
@@ -28,7 +27,7 @@ class _QuickPickupPageState extends State<QuickPickupPage> {
       try {
         awbScanned = await FlutterBarcodeScanner.scanBarcode(
             "#ff6666", "Cancel", true, ScanMode.BARCODE);
-              // awbScanned = "BEO1929038202";
+      // awbScanned = "BEO1929038202";
       //  changeStatus(awbScanned);
       } catch (e) {
         throw e.toString();
