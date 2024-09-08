@@ -114,7 +114,7 @@ class _PickDetailsPageState extends State<PickDetailsPage> {
                               style: TextStyle(color: Colors.purple),
                             ),
                             SizedBox(
-                              width: 230,
+                              width: 180,
                               child: Text(
                                 widget.address,
                                 softWrap: true,

@@ -74,11 +74,15 @@ class _PickableShipmentState extends State<PickableShipment> {
                           ),
                         ),
                         SizedBox(
+                          width: 100,
                           height: 15,
-                          child: Text(widget.senderName ,  
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                          style:  const TextStyle(fontSize: 12),),
+                          child: Text(
+                            widget.senderName,
+                            maxLines: 2,
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontSize: 11),
+                            ),
                         ),
                       ],
                     )),
@@ -91,9 +95,16 @@ class _PickableShipmentState extends State<PickableShipment> {
                               color: Color.fromRGBO(155, 155, 155, 1),
                               size: 14),
                         ),
-                        SizedBox(
+                       SizedBox(
+                          width: 100,
                           height: 15,
-                          child: Text(widget.senderPhone , style: const TextStyle( fontSize: 12),),
+                          child: Text(
+                            widget.senderPhone,
+                            maxLines: 2,
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontSize: 11),
+                            ),
                         ),
                       ],
                     )),
