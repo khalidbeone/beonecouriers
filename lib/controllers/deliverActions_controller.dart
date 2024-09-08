@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:beonecouriers/controllers/refreshToken_controller.dart';
 import 'package:beonecouriers/runableShipments.dart';
 import 'package:flutter/material.dart';
 import '../Core/apiCore.dart';
@@ -11,17 +12,20 @@ class DeliveryActionsController extends GetxController {
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
+  RefreshController refreshController = Get.put(RefreshController());
+
 
   Future<void> notDelivered(shipId , reasonId) async {
-    
+    refreshController.refreshToken();
     final  SharedPreferences prefs = await _prefs;
-    var token = prefs?.getString('token').toString();
+    var token = prefs?.getString('refresh').toString();
     var headers = {
       "Content-Type": "application/json",
       "Accept": "application/json",
       'Authorization': 'Bearer $token',
 
     };
+    
     if (shipId != '' && reasonId != '') {
       try {
         var url = Uri.parse(demoBaseUrl + methods[7]);
@@ -105,13 +109,13 @@ class DeliveryActionsController extends GetxController {
 
 
  Future<void> deliveredShipment(shipId) async {
-    
+    var refresh = refreshController.refreshToken();
     final  SharedPreferences prefs = await _prefs;
     var token = prefs?.getString('token').toString();
     var headers = {
       "Content-Type": "application/json",
       "Accept": "application/json",
-      'Authorization': 'Bearer $token',
+      'Authorization': 'Bearer ${refresh.toString()}',
 
     };
     if (shipId != '' && otpEditingController.text.toString() != '') {

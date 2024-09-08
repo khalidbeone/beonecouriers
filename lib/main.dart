@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:beonecouriers/controllers/refreshToken_controller.dart';
 import 'package:beonecouriers/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,8 +9,37 @@ void main()  {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  RefreshController refreshController = Get.put(RefreshController());
+
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    // Immediately refresh the token when the app starts
+    refreshController.refreshToken();
+
+    // Set up the timer to refresh the token every hour
+    _timer = Timer.periodic(const Duration(minutes: 1), (timer) {
+      var token = refreshController.refreshToken();
+      print(token);
+    });
+  }
+
+  @override
+  void dispose() {
+    // Cancel the timer when the widget is disposed
+    _timer?.cancel();
+    super.dispose();
+  }
 
   // This widget is the root of your application.
   @override
