@@ -10,6 +10,9 @@ android {
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
    
+    lintOptions {
+        disable 'Deprecation'
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

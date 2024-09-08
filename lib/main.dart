@@ -7,7 +7,7 @@ import 'package:beonecouriers/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main()  {
+void main() {
   runApp(const MyApp());
 }
 
@@ -26,17 +26,21 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    super.initState();
+    try {
+      super.initState();
       // print ('Tt [[ ${authCheckController.checkAuthing.toString()} ]]');
 
-    // Immediately refresh the token when the app starts
-    refreshController.refreshToken();
+      // Immediately refresh the token when the app starts
+      refreshController.refreshToken();
 
-    // Set up the timer to refresh the token every hour
-    _timer = Timer.periodic(const Duration(minutes: 40), (timer) {
-      var token = refreshController.refreshToken();
-      print(token);
-    });
+      // Set up the timer to refresh the token every hour
+      _timer = Timer.periodic(const Duration(minutes: 40), (timer) {
+        var token = refreshController.refreshToken();
+        print(token);
+      });
+    } catch (e) {
+      throw e.toString();
+    }
   }
 
   @override
@@ -54,16 +58,21 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         fontFamily: 'Lato',
         inputDecorationTheme: const InputDecorationTheme(
-          hintStyle: TextStyle(color: Color.fromRGBO(145, 145, 145, 1) , fontFamily: 'Lato' , fontSize: 11 , fontWeight: FontWeight.w700),
+          hintStyle: TextStyle(
+              color: Color.fromRGBO(145, 145, 145, 1),
+              fontFamily: 'Lato',
+              fontSize: 11,
+              fontWeight: FontWeight.w700),
           iconColor: Color.fromRGBO(145, 145, 145, 1),
           prefixIconColor: Color.fromRGBO(145, 145, 145, 1),
         ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        primaryColor:Colors.deepPurple,
+        primaryColor: Colors.deepPurple,
         useMaterial3: true,
       ),
-      home: authCheckController.checkAuthing.toString().indexOf('Closure')  > 0  ?   const  Homepage()  :     const LoginPage() ,
+      home: authCheckController.checkAuthing.toString().indexOf('Closure') > 0
+          ? const Homepage()
+          : const LoginPage(),
     );
   }
 }
-
