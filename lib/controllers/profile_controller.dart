@@ -10,7 +10,7 @@ class ProfileController extends GetxController {
  
     Future<Map<String, dynamic>> fetchProfile() async {
       final  SharedPreferences prefs = await _prefs;
-      var token = prefs?.getString('token').toString();
+      var token = prefs.getString('token').toString();
         var headers = {
       "Content-Type": "application/json",
       "Accept": "application/json",

@@ -50,7 +50,7 @@ class _NotDeliveredPageState extends State<NotDeliveredPage> {
 
   Future<void> fetchData() async {
     final SharedPreferences prrefs = await _prrefs;
-    var token = prrefs?.getString('token').toString();
+    var token = prrefs.getString('token').toString();
     var headers = {
       "Content-Type": "application/json",
       "Accept": "application/json",

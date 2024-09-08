@@ -73,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: ElevatedButton(
                       onPressed: () async {
                         final SharedPreferences prefs = await _prefs;
-                        prefs?.clear();
+                        prefs.clear();
                         Get.offAll(const LoginPage());
                       },
                       style: ElevatedButton.styleFrom(

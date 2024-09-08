@@ -34,7 +34,7 @@ class LoginController extends GetxController {
           if (data['status'] == 200) {
             var token = data['data']['access_token'];
             final SharedPreferences prefs = await _prefs;
-            await prefs?.setString('token', token);
+            await prefs.setString('token', token);
 
             emailController.clear();
             passwordController.clear();
