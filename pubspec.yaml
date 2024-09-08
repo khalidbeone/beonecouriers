@@ -40,6 +40,7 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   shared_preferences: ^2.3.2
   url_launcher: ^6.0.20
+  flutter_launcher_icons: ^0.13.1
   # get_storage: ^2.1.1
 
 dev_dependencies:
@@ -55,6 +56,10 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/appIcon.png"
 
 # The following section is specific to Flutter packages.
 flutter:
