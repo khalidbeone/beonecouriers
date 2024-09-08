@@ -32,7 +32,26 @@ class _PickableShipmentstate extends State<PickableShipments> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const PageLabel(subject: 'My PickList Shipments'),
+                      Row(
+                        children: [
+                          const Expanded(
+                            flex:2,
+                            child: PageLabel(subject: 'My PickList Shipments'),
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: (() {
+                                setState(() {});
+                              }),
+                              child: const Icon(
+                                Icons.refresh,
+                                size: 30,
+                                color: Color.fromARGB(255, 161, 161, 161),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,14 +60,19 @@ class _PickableShipmentstate extends State<PickableShipments> {
                             padding: const EdgeInsets.all(8.0),
                             child: SizedBox(
                               child: ElevatedButton(
-                                onPressed: (() { Get.to(const QuickPickupPage()) ; }),
+                                onPressed: (() {
+                                  Get.to(const QuickPickupPage());
+                                }),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
                                       const Color.fromRGBO(255, 159, 67, 1.0),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5)),
                                 ),
-                                child: const Text(' Quick Pickup ' , style: TextStyle(color: Colors.white),),
+                                child: const Text(
+                                  ' Quick Pickup ',
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                             ),
                           ),
@@ -79,6 +103,7 @@ class _PickableShipmentstate extends State<PickableShipments> {
                             );
                           }
                           final data = snapshot.data!;
+                          print(data['data'].length);
                           return ListView.builder(
                               scrollDirection: Axis.vertical,
                               itemCount: data['data'].length,
@@ -92,7 +117,7 @@ class _PickableShipmentstate extends State<PickableShipments> {
                                       ['sender_name'],
                                   senderPhone: data['data'][index]
                                       ['sender_phone'],
-                                  status:  data['data'][index]['current_status'],
+                                  status: data['data'][index]['current_status'],
                                 );
                               });
                         }),
