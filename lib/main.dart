@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
       refreshController.refreshToken();
 
       // Set up the timer to refresh the token every hour
-      _timer = Timer.periodic(const Duration(seconds: 30), (timer) {
+      _timer = Timer.periodic(const Duration(minutes: 5 ), (timer) {
         var token = refreshController.refreshToken();
         print(token);
       });

@@ -14,7 +14,6 @@ class RunableShipment extends StatefulWidget {
   final String recPhone;
   final String city; 
 
-
   const RunableShipment(
       {super.key,
       required this.shipId,
@@ -25,7 +24,7 @@ class RunableShipment extends StatefulWidget {
       required this.codAmount,
       required this.senderName,
       required this.recPhone,
-      required this.city,
+      required this.city
       });
 
   @override

@@ -64,7 +64,7 @@ class _RunableShipmentsState extends State<RunableShipments> {
                             address: data['data'][index]['receiver']['address'] ,
                             senderName: data['data'][index]['shipments']['sender'],
                             recPhone: data['data'][index]['receiver']['phone'] ,
-                            codAmount: data['data'][index]['shipments']['cod_fees'],
+                            codAmount: data['data'][index]['shipments']['payment_type'] != 'cc' ? data['data'][index]['shipments']['cod_fees'] : '0',
                             city: data['data'][index]['receiver']['city'],
                             );
                       });
